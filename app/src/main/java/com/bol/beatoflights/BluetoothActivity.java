@@ -24,7 +24,7 @@ import java.util.Set;
 /**
  * Created by jackb on 10/04/2016.
  */
-public class BluetoothActivity extends Activity {
+public class BluetoothActivity extends Activity implements ColorPicker.OnColorChangedListener{
     private static final String MESSAGE_NOT_SUPPORTED = "BLUETOOTH NOT SUPPORTED";
     private static final String MESSAGE_DISCOVERING = "DISCOVERING IN PROCESS";
     private static final int REQUEST_ENABLE_BT = 2;
@@ -34,7 +34,7 @@ public class BluetoothActivity extends Activity {
     private boolean bluetoothEnable = false;
     private TextView text;
     private TextView text2;
-    private TextView text3;
+    private TextView txt;
     private LinearLayout rootLayout;
     //BUFFER USED TO STORE INPUT STREAM FORM BLUETOOTH
     private StringBuffer buffer = new StringBuffer();
@@ -67,30 +67,26 @@ public class BluetoothActivity extends Activity {
     private Set<BluetoothDevice> mArrayAdapter;
 
 
-    /*
-    variabili picker
-     */
-    ColorPicker picker = (ColorPicker) findViewById(R.id.picker);
-    SVBar svBar = (SVBar) findViewById(R.id.svbar);
-    OpacityBar opacityBar = (OpacityBar) findViewById(R.id.opacitybar);
-    SaturationBar saturationBar = (SaturationBar) findViewById(R.id.saturationbar);
-    ValueBar valueBar = (ValueBar) findViewById(R.id.valuebar);
 
-    public void prova() {
-
-        picker.addSVBar(svBar);
-        picker.addOpacityBar(opacityBar);
-        picker.addSaturationBar(saturationBar);
-        picker.addValueBar(valueBar);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth);
 
-
+        ColorPicker picker = (ColorPicker) findViewById(R.id.picker);
+        SVBar svBar = (SVBar) findViewById(R.id.svbar);
+        OpacityBar opacityBar = (OpacityBar) findViewById(R.id.opacitybar);
+        SaturationBar saturationBar = (SaturationBar) findViewById(R.id.saturationbar);
+        ValueBar valueBar = (ValueBar) findViewById(R.id.valuebar);
         //mArrayAdapter = new HashSet<>();
+        picker.addSVBar(svBar);
+        picker.addOpacityBar(opacityBar);
+        picker.addSaturationBar(saturationBar);
+        picker.addValueBar(valueBar);
+        picker.getColor();
+
+
         loadUIElement();
         mArrayAdapter = new HashSet<>();
         bConnector = new BluetoothConnector(getApplicationContext(), text, mHandler);
@@ -98,11 +94,22 @@ public class BluetoothActivity extends Activity {
 
     }
 
+    @Override
+    public void onColorChanged (int Color) {
+        final int c = Color;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                txt.setTextColor(c);
+            }
+        }, 2000);
+    }
+
     //wrap ui elements
     public void loadUIElement() {
         text = (TextView) findViewById(R.id.text);
         text2 = (TextView) findViewById(R.id.text2);
-        text3 = (TextView) findViewById(R.id.text3);
+        txt = (TextView) findViewById(R.id.txt);
         rootLayout = (LinearLayout) findViewById(R.id.rootLayout);
     }
 
@@ -157,13 +164,7 @@ public class BluetoothActivity extends Activity {
 
     }
 
-    public void giveMeColor(View v) {
-        int tmp;
-        tmp = picker.getColor();
-        String str = String.valueOf(tmp);
-        text3.setText(str);
 
-    }
 
     protected void goEnableBluetooth() {
         Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
