@@ -34,6 +34,7 @@ public class BluetoothActivity extends Activity {
     private boolean bluetoothEnable = false;
     private TextView text;
     private TextView text2;
+    private TextView text3;
     private LinearLayout rootLayout;
     //BUFFER USED TO STORE INPUT STREAM FORM BLUETOOTH
     private StringBuffer buffer = new StringBuffer();
@@ -65,6 +66,24 @@ public class BluetoothActivity extends Activity {
     };
     private Set<BluetoothDevice> mArrayAdapter;
 
+
+    /*
+    variabili picker
+     */
+    ColorPicker picker = (ColorPicker) findViewById(R.id.picker);
+    SVBar svBar = (SVBar) findViewById(R.id.svbar);
+    OpacityBar opacityBar = (OpacityBar) findViewById(R.id.opacitybar);
+    SaturationBar saturationBar = (SaturationBar) findViewById(R.id.saturationbar);
+    ValueBar valueBar = (ValueBar) findViewById(R.id.valuebar);
+
+    public void prova() {
+
+        picker.addSVBar(svBar);
+        picker.addOpacityBar(opacityBar);
+        picker.addSaturationBar(saturationBar);
+        picker.addValueBar(valueBar);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +102,7 @@ public class BluetoothActivity extends Activity {
     public void loadUIElement() {
         text = (TextView) findViewById(R.id.text);
         text2 = (TextView) findViewById(R.id.text2);
+        text3 = (TextView) findViewById(R.id.text3);
         rootLayout = (LinearLayout) findViewById(R.id.rootLayout);
     }
 
@@ -134,6 +154,14 @@ public class BluetoothActivity extends Activity {
                 values = values + b.getName() + "\n";
             }
         text2.setText(values);
+
+    }
+
+    public void giveMeColor(View v) {
+        int tmp;
+        tmp = picker.getColor();
+        String str = String.valueOf(tmp);
+        text3.setText(str);
 
     }
 
