@@ -66,7 +66,7 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
     };
     private Set<BluetoothDevice> mArrayAdapter;
 
-
+    private com.larswerkman.holocolorpicker.ColorPicker picker;
 
 
     @Override
@@ -74,17 +74,23 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth);
 
-        ColorPicker picker = (ColorPicker) findViewById(R.id.picker);
-        SVBar svBar = (SVBar) findViewById(R.id.svbar);
-        OpacityBar opacityBar = (OpacityBar) findViewById(R.id.opacitybar);
-        SaturationBar saturationBar = (SaturationBar) findViewById(R.id.saturationbar);
-        ValueBar valueBar = (ValueBar) findViewById(R.id.valuebar);
+        picker = (com.larswerkman.holocolorpicker.ColorPicker) findViewById(R.id.picker);
+        com.larswerkman.holocolorpicker.SVBar svBar = (com.larswerkman.holocolorpicker.SVBar) findViewById(R.id.svbar);
+        com.larswerkman.holocolorpicker.OpacityBar opacityBar = (com.larswerkman.holocolorpicker.OpacityBar) findViewById(R.id.opacitybar);
+        com.larswerkman.holocolorpicker.SaturationBar saturationBar = (com.larswerkman.holocolorpicker.SaturationBar) findViewById(R.id.saturationbar);
+        com.larswerkman.holocolorpicker.ValueBar valueBar = (com.larswerkman.holocolorpicker.ValueBar) findViewById(R.id.valuebar);
         //mArrayAdapter = new HashSet<>();
         picker.addSVBar(svBar);
         picker.addOpacityBar(opacityBar);
         picker.addSaturationBar(saturationBar);
         picker.addValueBar(valueBar);
         picker.getColor();
+
+        picker.setOldCenterColor(picker.getColor());
+
+//        picker.setOnColorChangedListener(this);
+
+        picker.setShowOldCenterColor(false);
 
 
         loadUIElement();
@@ -111,6 +117,10 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
         text2 = (TextView) findViewById(R.id.text2);
         txt = (TextView) findViewById(R.id.txt);
         rootLayout = (LinearLayout) findViewById(R.id.rootLayout);
+    }
+
+    public void changeColor(View v) {
+        txt.setTextColor(picker.getColor());
     }
 
     public void addButtonDevice(final BluetoothDevice device) {
