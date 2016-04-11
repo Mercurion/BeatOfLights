@@ -120,6 +120,9 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
     }
 
     public void changeColor(View v) {
+        /*
+        qui va gestita la modifica del valore di text_rgb per settare il valore proveniente da picker.getcolor()
+         */
         txt.setTextColor(picker.getColor());
     }
 
@@ -149,7 +152,6 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
 
     //discover new devices
     public void discover(View v) {
-
         if (bConnector.isSupported()) {
             if (!bConnector.isEnable()) {
                 goEnableBluetooth();
