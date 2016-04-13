@@ -3,6 +3,18 @@ package com.bol.beatoflights;
 /**
  * Created by jackb on 11/04/2016.
  */
+
+
+/*
+il server MQTT a cui connettersi per inviare i colori a BOL è:
+
+Hostname: ec2-54-191-110-141.us-west-2.compute.amazonaws.com
+Porta: 1883
+Topic: ftruzzi/in
+Formato stringa: "M,255,255,255"
+
+Sottoscrivendosi al canale "ftruzzi/out" è possibile verificare l'effettiva ricezione del messaggio da parte di BOL.
+ */
 import java.util.Locale;
 
 import android.app.AlarmManager;
