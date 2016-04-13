@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -21,6 +22,11 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.HashSet;
 import java.util.Set;
+
+import static android.graphics.Color.blue;
+import static android.graphics.Color.green;
+import static android.graphics.Color.red;
+
 /**
  * Created by jackb on 10/04/2016.
  */
@@ -124,6 +130,12 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
         qui va gestita la modifica del valore di text_rgb per settare il valore proveniente da picker.getcolor()
          */
         txt.setTextColor(picker.getColor());
+        int rosso;
+        int blu;
+        int verde;
+        rosso = red(picker.getColor());
+        blu = blue(picker.getColor());
+        verde = green(picker.getColor());
     }
 
     public void addButtonDevice(final BluetoothDevice device) {
