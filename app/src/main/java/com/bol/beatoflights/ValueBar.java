@@ -26,6 +26,7 @@ public class ValueBar extends View {
 
     /*
      * Constants used to save/restore the instance state.
+     *
      */
     private static final String STATE_PARENT = "parent";
     private static final String STATE_COLOR = "color";
