@@ -33,6 +33,11 @@ import static android.graphics.Color.red;
  * Created by jackb on 10/04/2016.
  */
 public class BluetoothActivity extends Activity implements ColorPicker.OnColorChangedListener{
+
+    private int rosso;
+    private int blu;
+    private int verde;
+
     private static final String MESSAGE_NOT_SUPPORTED = "BLUETOOTH NOT SUPPORTED";
     private static final String MESSAGE_DISCOVERING = "DISCOVERING IN PROCESS";
     private static final int REQUEST_ENABLE_BT = 2;
@@ -109,7 +114,7 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
 
     public void openMqtt (View v) {
         String tmp = String.valueOf(picker.getColor());
-
+        tmp = "M." + String.valueOf(rosso) +"."  + String.valueOf(verde) +"."+ String.valueOf(blu);
         Intent myIntent = new Intent(BluetoothActivity.this, MqttService.class);
         myIntent.putExtra("colore", tmp); //Optional parameters
         startActivity(myIntent);
@@ -140,9 +145,7 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
         qui va gestita la modifica del valore di text_rgb per settare il valore proveniente da picker.getcolor()
          */
         txt.setTextColor(picker.getColor());
-        int rosso;
-        int blu;
-        int verde;
+
         rosso = red(picker.getColor());
         blu = blue(picker.getColor());
         verde = green(picker.getColor());
