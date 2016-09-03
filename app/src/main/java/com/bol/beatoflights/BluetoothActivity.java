@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.larswerkman.holocolorpicker.ColorPicker;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -94,8 +96,6 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
 
         picker.setOldCenterColor(picker.getColor());
 
-//        picker.setOnColorChangedListener(this);
-
         picker.setShowOldCenterColor(false);
 
 
@@ -103,6 +103,16 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
         mArrayAdapter = new HashSet<>();
         bConnector = new BluetoothConnector(getApplicationContext(), text, mHandler);
 
+
+
+    }
+
+    public void openMqtt (View v) {
+        String tmp = String.valueOf(picker.getColor());
+
+        Intent myIntent = new Intent(BluetoothActivity.this, MqttService.class);
+        myIntent.putExtra("colore", tmp); //Optional parameters
+        startActivity(myIntent);
 
     }
 
