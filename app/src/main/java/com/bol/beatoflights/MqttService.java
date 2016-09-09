@@ -5,8 +5,7 @@ package com.bol.beatoflights;
  */
 
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -335,7 +334,6 @@ public class MqttService extends AppCompatActivity {
 
                 } else if (client.isConnected()) {
                     checkMQTTMessage();
-
 
                 } else {
                     Toast.makeText(getBaseContext(), "NOT sent",

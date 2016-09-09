@@ -28,4 +28,5 @@ dependencies {
         exclude module: 'support-v4'
     }
     compile 'com.larswerkman:HoloColorPicker:1.5'
+    compile 'org.jetbrains:annotations-java5:15.0'
 }

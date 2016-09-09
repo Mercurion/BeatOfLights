@@ -38,6 +38,8 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
     private int blu;
     private int verde;
 
+    private MqttUtility mqtt;
+
     private static final String MESSAGE_NOT_SUPPORTED = "BLUETOOTH NOT SUPPORTED";
     private static final String MESSAGE_DISCOVERING = "DISCOVERING IN PROCESS";
     private static final int REQUEST_ENABLE_BT = 2;
@@ -107,17 +109,21 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
         loadUIElement();
         mArrayAdapter = new HashSet<>();
         bConnector = new BluetoothConnector(getApplicationContext(), text, mHandler);
-
-
+        mqtt = new MqttUtility(this.getApplicationContext());
 
     }
 
     public void openMqtt (View v) {
-        String tmp = String.valueOf(picker.getColor());
+        String tmp ;
         tmp = "M." + String.valueOf(rosso) +"."  + String.valueOf(verde) +"."+ String.valueOf(blu);
+        /*
         Intent myIntent = new Intent(BluetoothActivity.this, MqttService.class);
         myIntent.putExtra("colore", tmp); //Optional parameters
         startActivity(myIntent);
+        */
+
+        mqtt.setColore(tmp);
+        mqtt.sendColore();
 
     }
 
