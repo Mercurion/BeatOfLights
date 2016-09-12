@@ -122,6 +122,7 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
         startActivity(myIntent);
         */
 
+
         mqtt.setColore(tmp);
         mqtt.sendColore();
 
