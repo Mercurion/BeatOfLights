@@ -2,8 +2,6 @@ package com.bol.beatoflights;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
@@ -18,11 +16,11 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.jetbrains.annotations.Contract;
 
 import java.io.UnsupportedEncodingException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 /**
- * @author jack .
+ * Questa classe serve per inviare messaggi MQTT
+ * @author jack
  */
 public class MqttUtility {
 
