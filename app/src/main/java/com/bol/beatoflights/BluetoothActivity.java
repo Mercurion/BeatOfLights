@@ -115,7 +115,7 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
 
     public void openMqtt (View v) {
         String tmp ;
-        tmp = "M." + String.valueOf(rosso) +"."  + String.valueOf(verde) +"."+ String.valueOf(blu);
+        tmp = "M," + String.valueOf(rosso) +","  + String.valueOf(verde) +","+ String.valueOf(blu);
         /*
         Intent myIntent = new Intent(BluetoothActivity.this, MqttService.class);
         myIntent.putExtra("colore", tmp); //Optional parameters
