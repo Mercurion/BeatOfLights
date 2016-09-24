@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -30,7 +29,7 @@ import static android.graphics.Color.green;
 import static android.graphics.Color.red;
 
 /**
- * Created by jackb on 10/04/2016.
+ * @author Giacomo
  */
 public class BluetoothActivity extends Activity implements ColorPicker.OnColorChangedListener{
 
@@ -91,7 +90,7 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
 
         picker = (com.larswerkman.holocolorpicker.ColorPicker) findViewById(R.id.picker);
         com.larswerkman.holocolorpicker.SVBar svBar = (com.larswerkman.holocolorpicker.SVBar) findViewById(R.id.svbar);
-        com.larswerkman.holocolorpicker.OpacityBar opacityBar = (com.larswerkman.holocolorpicker.OpacityBar) findViewById(R.id.opacitybar);
+        com.larswerkman.holocolorpicker.OpacityBar opacityBar = (com.larswerkman.holocolorpicker.OpacityBar) findViewById(R.id.new_opacitybar);
         com.larswerkman.holocolorpicker.SaturationBar saturationBar = (com.larswerkman.holocolorpicker.SaturationBar) findViewById(R.id.saturationbar);
         com.larswerkman.holocolorpicker.ValueBar valueBar = (com.larswerkman.holocolorpicker.ValueBar) findViewById(R.id.valuebar);
         //mArrayAdapter = new HashSet<>();

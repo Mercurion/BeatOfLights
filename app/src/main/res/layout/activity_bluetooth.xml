@@ -68,7 +68,7 @@
             android:layout_gravity="center_horizontal" />
 
         <com.larswerkman.holocolorpicker.OpacityBar
-            android:id="@+id/opacitybar"
+            android:id="@+id/new_opacitybar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" />

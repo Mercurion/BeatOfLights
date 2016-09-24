@@ -16,19 +16,40 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="BluetoothActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+        <activity
+            android:name="BluetoothActivity">
         </activity>
 
-        <activity android:name=".MqttService">
+        <activity
+            android:name=".MqttService"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".StartingActivity">
+
+        <activity
+            android:name=".StartingActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <service android:name="org.eclipse.paho.android.service.MqttService" >
+
+        <activity
+            android:name=".LampActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+        </activity>
+        <service
+            android:name="org.eclipse.paho.android.service.MqttService" >
         </service>
+
 
     </application>
 
