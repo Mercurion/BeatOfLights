@@ -43,9 +43,6 @@ public class StartingActivity extends Activity {
 
     private void setRunnables () {
         this.launchRunnable = new Runnable() {
-            /*
-            questo runnable parte se non arriva la risposta al messaggio status e quindi il master è in errore
-             */
             @Override
             public void run() {
                 lanciaActivity();
