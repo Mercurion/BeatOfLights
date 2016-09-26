@@ -42,7 +42,6 @@
 
         <activity
             android:name=".LampActivity"
-            android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>

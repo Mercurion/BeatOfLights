@@ -3,6 +3,9 @@ package com.bol.beatoflights;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -57,4 +60,28 @@ public class LampActivity extends Activity implements ColorPicker.OnColorChanged
                 Toast.LENGTH_LONG).show();
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.bol_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.help:
+                Toast.makeText(this, "Help",
+                        Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.settings:
+                Toast.makeText(this, "Setting",
+                        Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

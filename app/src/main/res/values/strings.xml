@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BOL</string>
+    <string name="setting">Impostazioni</string>
+    <string name="help">Aiuto</string>
 </resources>
