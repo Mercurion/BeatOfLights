@@ -26,7 +26,6 @@ public class StartingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting);
         setRunnables();
-
         myHandler.postDelayed(launchRunnable, WAIT);
         myImage = (ImageView)findViewById(R.id.logoIniziale);
         myImage.setImageResource(R.drawable.logogrande);

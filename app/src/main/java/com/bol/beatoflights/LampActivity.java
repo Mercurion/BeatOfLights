@@ -1,23 +1,31 @@
 package com.bol.beatoflights;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
 import com.larswerkman.holocolorpicker.ColorPicker;
 
-import java.util.HashSet;
+
+import static android.graphics.Color.blue;
+import static android.graphics.Color.green;
+import static android.graphics.Color.red;
 
 /**
  * @author Giacomo
  */
 
-public class LampActivity extends Activity implements ColorPicker.OnColorChangedListener{
+public class LampActivity extends AppCompatActivity implements ColorPicker.OnColorChangedListener{
 
     private int rosso;
     private int blu;
@@ -34,32 +42,38 @@ public class LampActivity extends Activity implements ColorPicker.OnColorChanged
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lamp);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         picker = (com.larswerkman.holocolorpicker.ColorPicker) findViewById(R.id.picker);
         com.larswerkman.holocolorpicker.OpacityBar opacityBar = (com.larswerkman.holocolorpicker.OpacityBar) findViewById(R.id.new_opacitybar);
-        //mArrayAdapter = new HashSet<>();
         picker.addOpacityBar(opacityBar);
         picker.getColor();
 
         picker.setOldCenterColor(picker.getColor());
-
         picker.setShowOldCenterColor(false);
 
-
-//        mArrayAdapter = new HashSet<>();
         mqtt = new MqttUtility(this.getApplicationContext());
         myImageOpacity = (ImageView)findViewById(R.id.opacityImage);
         myImageOpacity.setImageResource(R.drawable.light_power_img);
-
     }
 
+
+    private void getRGBColor () {
+        rosso = red(picker.getColor());
+        blu = blue(picker.getColor());
+        verde = green(picker.getColor());
+    }
 
     @Override
     public void onColorChanged (int Color) {
-        final int c = Color;
-        Toast.makeText(this, "Cambiato colore",
-                Toast.LENGTH_LONG).show();
+        getRGBColor();
+        String tmp ;
+        tmp = "M," + String.valueOf(rosso) +","  + String.valueOf(verde) +","+ String.valueOf(blu);
+        Log.println(Log.INFO,"Colore",tmp);
+        mqtt.setColore(tmp);
+        mqtt.sendColore();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,12 +86,12 @@ public class LampActivity extends Activity implements ColorPicker.OnColorChanged
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.help:
-                Toast.makeText(this, "Help",
+            case R.id.action_settings:
+                Toast.makeText(this, "setting",
                         Toast.LENGTH_LONG).show();
                 return true;
-            case R.id.settings:
-                Toast.makeText(this, "Setting",
+            case R.id.action_favorite:
+                Toast.makeText(this, "favourite",
                         Toast.LENGTH_LONG).show();
                 return true;
             default:

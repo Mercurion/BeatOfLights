@@ -43,7 +43,9 @@
         <activity
             android:name=".LampActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            >
         </activity>
         <service
             android:name="org.eclipse.paho.android.service.MqttService" >
