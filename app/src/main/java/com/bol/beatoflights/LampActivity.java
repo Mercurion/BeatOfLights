@@ -1,8 +1,9 @@
 package com.bol.beatoflights;
 
-import android.app.Activity;
-import android.graphics.Color;
+
+import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -10,7 +11,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
@@ -36,7 +40,6 @@ public class LampActivity extends AppCompatActivity implements ColorPicker.OnCol
     private ImageView myImageOpacity;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,7 @@ public class LampActivity extends AppCompatActivity implements ColorPicker.OnCol
         mqtt = new MqttUtility(this.getApplicationContext());
         myImageOpacity = (ImageView)findViewById(R.id.opacityImage);
         myImageOpacity.setImageResource(R.drawable.light_power_img);
+
     }
 
 
@@ -98,4 +102,6 @@ public class LampActivity extends AppCompatActivity implements ColorPicker.OnCol
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 }
