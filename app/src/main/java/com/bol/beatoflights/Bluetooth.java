@@ -531,8 +531,4 @@ public class Bluetooth {
             }
         }
     }
-
-
-
-
 }

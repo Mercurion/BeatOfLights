@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -40,7 +41,6 @@ public class LampActivity extends AppCompatActivity implements ColorPicker.OnCol
     private com.larswerkman.holocolorpicker.ColorPicker picker;
     private ImageView myImageOpacity;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +56,11 @@ public class LampActivity extends AppCompatActivity implements ColorPicker.OnCol
 
         picker.setOldCenterColor(picker.getColor());
         picker.setShowOldCenterColor(false);
+        picker.setOnColorChangedListener(this);
 
         mqtt = new MqttUtility(this.getApplicationContext());
         myImageOpacity = (ImageView)findViewById(R.id.opacityImage);
         myImageOpacity.setImageResource(R.drawable.light_power_img);
-
     }
 
 

@@ -89,15 +89,15 @@ public class BluetoothActivity extends Activity implements ColorPicker.OnColorCh
         setContentView(R.layout.activity_bluetooth);
 
         picker = (com.larswerkman.holocolorpicker.ColorPicker) findViewById(R.id.picker);
-        com.larswerkman.holocolorpicker.SVBar svBar = (com.larswerkman.holocolorpicker.SVBar) findViewById(R.id.svbar);
+ //       com.larswerkman.holocolorpicker.SVBar svBar = (com.larswerkman.holocolorpicker.SVBar) findViewById(R.id.svbar);
         com.larswerkman.holocolorpicker.OpacityBar opacityBar = (com.larswerkman.holocolorpicker.OpacityBar) findViewById(R.id.new_opacitybar);
-        com.larswerkman.holocolorpicker.SaturationBar saturationBar = (com.larswerkman.holocolorpicker.SaturationBar) findViewById(R.id.saturationbar);
-        com.larswerkman.holocolorpicker.ValueBar valueBar = (com.larswerkman.holocolorpicker.ValueBar) findViewById(R.id.valuebar);
+//        com.larswerkman.holocolorpicker.SaturationBar saturationBar = (com.larswerkman.holocolorpicker.SaturationBar) findViewById(R.id.saturationbar);
+//        com.larswerkman.holocolorpicker.ValueBar valueBar = (com.larswerkman.holocolorpicker.ValueBar) findViewById(R.id.valuebar);
         //mArrayAdapter = new HashSet<>();
-        picker.addSVBar(svBar);
+//        picker.addSVBar(svBar);
         picker.addOpacityBar(opacityBar);
-        picker.addSaturationBar(saturationBar);
-        picker.addValueBar(valueBar);
+//        picker.addSaturationBar(saturationBar);
+//        picker.addValueBar(valueBar);
         picker.getColor();
 
         picker.setOldCenterColor(picker.getColor());

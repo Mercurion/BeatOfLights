@@ -44,7 +44,7 @@ public class MqttUtility {
 
 
     public MqttUtility(Context cnt) {
-        this.context = cnt;
+        context = cnt;
 
 
         client = new MqttAndroidClient(context, broker,
@@ -128,7 +128,7 @@ public class MqttUtility {
     public void sendColore () {
 
         if (client == null) {
-            Toast.makeText(context, "nessuno",
+            Toast.makeText(context, "NO CONNECTION",
                     Toast.LENGTH_LONG).show();
             return;
 
@@ -140,7 +140,6 @@ public class MqttUtility {
         }
     }
 
-    @Contract(pure = true)
     private static boolean isMessageValid(String message) {
         /*replaced false with true */
         boolean isValid = true;
@@ -158,9 +157,6 @@ public class MqttUtility {
                 MqttMessage message = new MqttMessage(encodedPayload);
                 client.publish(topic_pub, message);
                 Log.d(TAG, "onSent");
-                Toast.makeText(context, "sent" + "to" + topic_pub,
-                        Toast.LENGTH_LONG).show();
-
             } catch (UnsupportedEncodingException | MqttException e) {
                 Toast.makeText(context, "Errore",
                         Toast.LENGTH_SHORT).show();

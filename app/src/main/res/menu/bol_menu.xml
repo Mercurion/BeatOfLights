@@ -13,8 +13,4 @@
         android:title="@string/setting"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/action_websearch"
-        android:icon="@drawable/action_search"
-        android:title="@string/action_websearch"
-        app:showAsAction="ifRoom|withText" />
 </menu>
