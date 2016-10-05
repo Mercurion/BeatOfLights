@@ -1,6 +1,7 @@
 package com.bol.beatoflights;
 
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;

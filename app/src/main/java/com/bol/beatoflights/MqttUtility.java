@@ -162,6 +162,8 @@ public class MqttUtility {
                         Toast.LENGTH_LONG).show();
 
             } catch (UnsupportedEncodingException | MqttException e) {
+                Toast.makeText(context, "Errore",
+                        Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         } else {
