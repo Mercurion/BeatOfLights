@@ -42,6 +42,8 @@ public class LampActivity extends AppCompatActivity implements ColorPicker.OnCol
     private com.larswerkman.holocolorpicker.ColorPicker picker;
     private ImageView myImageOpacity;
 
+    private Button invio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,11 +59,19 @@ public class LampActivity extends AppCompatActivity implements ColorPicker.OnCol
 
         picker.setOldCenterColor(picker.getColor());
         picker.setShowOldCenterColor(false);
-        picker.setOnColorChangedListener(this);
+//        picker.setOnColorChangedListener(this);
 
         mqtt = new MqttUtility(this.getApplicationContext());
         myImageOpacity = (ImageView)findViewById(R.id.opacityImage);
         myImageOpacity.setImageResource(R.drawable.light_power_img);
+
+        invio = (Button) findViewById(R.id.buttoninvia);
+        invio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                invio();
+            }
+        });
     }
 
 
@@ -69,6 +79,16 @@ public class LampActivity extends AppCompatActivity implements ColorPicker.OnCol
         rosso = red(picker.getColor());
         blu = blue(picker.getColor());
         verde = green(picker.getColor());
+    }
+
+    private void invio () {
+        getRGBColor();
+        String tmp ;
+        tmp = "M," + String.valueOf(rosso) +","  + String.valueOf(verde) +","+ String.valueOf(blu);
+        Log.println(Log.INFO,"Colore",tmp);
+        mqtt.setColore(tmp);
+        mqtt.sendColore();
+        Toast.makeText(this, "inviato", Toast.LENGTH_LONG).show();
     }
 
     @Override
