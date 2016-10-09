@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * Created by jackb on 06/10/2016.
+ * @author Giacomo
  */
 public class ScreenSlidePageFragment extends Fragment {
     @Override

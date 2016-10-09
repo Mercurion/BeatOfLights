@@ -67,5 +67,14 @@
         android:layout_marginTop="33dp"
         android:id="@+id/buttoninvia" />
 
+    <Button
+        android:text="goAuto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/buttoninvia"
+        android:layout_alignStart="@+id/buttoninvia"
+        android:layout_marginTop="37dp"
+        android:id="@+id/autofunction" />
+
 
 </RelativeLayout>

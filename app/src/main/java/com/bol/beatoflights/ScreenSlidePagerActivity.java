@@ -11,7 +11,7 @@ import android.support.v4.view.ViewPager;
 
 
 /**
- * Created by jackb on 06/10/2016.
+ * @author Giacomo
  */
 
 public class ScreenSlidePagerActivity extends FragmentActivity {
